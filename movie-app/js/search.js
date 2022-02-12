@@ -1,5 +1,5 @@
 class Search {
-  constructor(parentСlass) {
+  constructor(parentСlass, callback) {
     this.element = document.createElement('div');
     this._render(parentСlass);
 
@@ -17,7 +17,7 @@ class Search {
       .addEventListener('click', this._handlerClick.bind(this));
 
     this.clearInput = false;
-    this.value = '';
+    this.callback = callback;
   }
 
   _handlerInput() {
@@ -28,8 +28,9 @@ class Search {
 
   _handlerClick(event) {
     if (
-      (event.keyCode === 13 && this.searchInput.value) ||
-      event.currentTarget.classList.contains('search__btn')
+      (event.keyCode === 13 ||
+        event.currentTarget.classList.contains('search__btn')) &&
+      this.searchInput.value != ''
     ) {
       if (this.clearInput) {
         this.searchInput.value = '';
@@ -37,7 +38,8 @@ class Search {
         this._conditionСlear();
       } else {
         this._conditionSearch();
-        console.log('this.clearInput');
+        this.oldValue = this.searchInput.value;
+        this.callback(this.searchInput.value);
       }
     }
   }
@@ -82,4 +84,4 @@ class Search {
   }
 }
 
-const search = new Search('header');
+export default Search;

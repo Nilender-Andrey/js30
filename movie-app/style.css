@@ -136,6 +136,7 @@ body {
   background-color: transparent;
   border-radius: 50%;
   border: 2px solid #eb5113;
+  outline: none;
 
   color: #eb5113;
   cursor: pointer;
