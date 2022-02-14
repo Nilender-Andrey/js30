@@ -6,13 +6,13 @@ async function getMovies(keyword = '', page = 1) {
   url += '/movie';
   url += keyword ? `?query=${keyword}` : `?sort_by=popularity.desc`;
   url += `&api_key=${key}`;
+  url += `&page=${page}`;
 
-  console.log(url);
   try {
     const response = await fetch(url);
     const data = await response.json();
-
-    return data.results;
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }

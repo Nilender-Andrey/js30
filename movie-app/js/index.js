@@ -1,4 +1,5 @@
+import ControlRenderCards from './control_render_cards.js';
 import Search from './search.js';
-import ControlRender from './control_render.js';
 
-new Search('header', ControlRender.reRender);
+await ControlRenderCards.render();
+new Search(ControlRenderCards.render, 'header');

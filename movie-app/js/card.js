@@ -1,22 +1,30 @@
 class Card {
-  constructor({ title, poster, overview, rating }, parentСlass = 'main') {
+  constructor({ title, poster, overview, rating }) {
     this.title = title;
     this.poster = poster;
     this.overview = overview;
     this.rating = rating;
     this.element = document.createElement('div');
-    this.parent = document.querySelector(`.${parentСlass}`);
 
-    this._render();
+    this._create();
   }
 
-  _render() {
+  _create() {
     const card = `
-     <img
-          class="card__img"
-          src="https://image.tmdb.org/t/p/w1280${this.poster}"
-          alt="${this.title}"
-        />
+          ${
+            this.poster
+              ? `<img
+            class="card__img"
+            src="https://image.tmdb.org/t/p/w1280${this.poster}"
+            alt="${this.title}"
+          />`
+              : `<img
+              class="card__img"
+              src="../assets/img/no_img.jpg"
+              alt="no image" style="object-fit:contain"            
+            />`
+          }
+    
 
         <div class="card-info">
           <h2 class="card-info__title">${this.title}</h2>
@@ -36,8 +44,20 @@ class Card {
     this.element.className = 'card';
     this.element.innerHTML = card;
 
+    return this.element;
+  }
+
+  addInside(parentСlass) {
+    this.parent = document.querySelector(`.${parentСlass}`);
     this.parent
       ? this.parent.append(this.element)
+      : console.error('Card display error');
+  }
+
+  addBefore(neighborСlass) {
+    this.neighbor = document.querySelector(`.${neighborСlass}`);
+    this.neighbor
+      ? this.neighbor.before(this.element)
       : console.error('Card display error');
   }
 }

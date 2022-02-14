@@ -22,56 +22,9 @@
           alt="logo"
         />
       </h1>
-
-      <!--   <div class="search">
-        <input
-          class="search__input"
-          type="text"
-          placeholder="Search"
-          autocomplete="off"
-        />
-        <button class="search__btn">
-          <svg class="search-icon_magnifier">
-            <use
-              xlink:href="./assets/svg/search_sprite.svg#magnifier"
-            ></use></svg
-          ><svg class="search-icon_clear none">
-            <use xlink:href="./assets/svg/search_sprite.svg#clear"></use>
-          </svg>
-        </button>
-      </div> -->
     </header>
 
-    <main class="main">
-      <div class="card">
-        <img
-          class="card__img"
-          src="https://image.tmdb.org/t/p/w1280/teCy1egGQa0y8ULJvlrDHQKnxBL.jpg"
-          alt="Hotel Transylvania: Transformania"
-        />
-
-        <div class="card-info">
-          <h2 class="card-info__title">Hotel Transylvania: Transformania</h2>
-          <span class="card-info__rating">5.5</span>
-        </div>
-
-        <div class="card-description">
-          <p class="card-description__title">Overview</p>
-          <div class="card-description_wrap">
-            <p class="card-description__text">
-              Buster and his new cast now have their sights set on debuting a
-              new show at the Crystal Tower Theater in glamorous Redshore City.
-              But with no connections, he and his singers must sneak into the
-              Crystal Entertainment offices, run by the ruthless wolf mogul
-              Jimmy Crystal, where the gang pitches the ridiculous idea of
-              casting the lion rock legend Clay Calloway in their show. Buster
-              must embark on a quest to find the now-isolated Clay and persuade
-              him to return to the stage.
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
+    <main class="main" id="main"></main>
 
     <footer class="footer">
       <div class="footer-info">
@@ -95,7 +48,9 @@
     <script type="module" src="js/get_movies.js"></script>
     <script type="module" src="js/card.js"></script>
     <script type="module" src="js/search.js"></script>
-    <script type="module" src="js/control_render.js"></script>
+    <script type="module" src="js/control_render_cards.js"></script>
+    <script type="module" src="js/infinite_scrolling.js"></script>
     <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/state.js"></script>
   </body>
 </html>

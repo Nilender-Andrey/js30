@@ -1,15 +1,15 @@
+import state from './state.js';
+
 class Search {
-  constructor(parentСlass, callback) {
+  constructor(callback, parentСlass = 'header') {
     this.element = document.createElement('div');
     this._render(parentСlass);
-
     this.searchInput = this.element.querySelector('.search__input');
-
     this.iconBtnСlear = this.element.querySelector('.search-icon_clear');
     this.iconBtnMagnifier = this.element.querySelector(
       '.search-icon_magnifier',
     );
-
+    this.searchInput.focus();
     this.searchInput.addEventListener('input', this._handlerInput.bind(this));
     this.searchInput.addEventListener('keydown', this._handlerClick.bind(this));
     this.element
@@ -17,6 +17,7 @@ class Search {
       .addEventListener('click', this._handlerClick.bind(this));
 
     this.clearInput = false;
+
     this.callback = callback;
   }
 
@@ -28,9 +29,8 @@ class Search {
 
   _handlerClick(event) {
     if (
-      (event.keyCode === 13 ||
-        event.currentTarget.classList.contains('search__btn')) &&
-      this.searchInput.value != ''
+      event.keyCode === 13 ||
+      event.currentTarget.classList.contains('search__btn')
     ) {
       if (this.clearInput) {
         this.searchInput.value = '';
@@ -38,10 +38,19 @@ class Search {
         this._conditionСlear();
       } else {
         this._conditionSearch();
-        this.oldValue = this.searchInput.value;
+
         this.callback(this.searchInput.value);
+        this._ScrollTop();
       }
+
+      if (!this.searchInput.value) this._conditionСlear();
+      state.setState({ search: this.searchInput.value });
     }
+  }
+
+  _ScrollTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   _conditionСlear() {
@@ -66,6 +75,7 @@ class Search {
       placeholder="Search"
       autocomplete="off"
     />
+    
     <button class="search__btn">
       <svg class="search-icon_magnifier">
         <use
@@ -75,12 +85,13 @@ class Search {
         <use xlink:href="./assets/svg/search_sprite.svg#clear"></use>
       </svg>
     </button>
+   
   `;
 
-    const header = document.querySelector(`.${parentСlass}`);
+    const parent = document.querySelector(`.${parentСlass}`);
     this.element.className = 'search';
     this.element.innerHTML = search;
-    header.append(this.element);
+    parent.append(this.element);
   }
 }
 
