@@ -11,7 +11,7 @@ async function getMovies(keyword = '', page = 1) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
     console.log(error);
