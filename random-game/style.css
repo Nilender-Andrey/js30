@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wolf {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  width: 250px;
+  height: 125px;
+}
+
+.wolf__body {
+  position: relative;
+
+  width: 100px;
+  height: inherit;
+}
+.wolf__body--left {
+  left: 13px;
+  background: url('./assets/img/wolf/wolf_left.png') center / contain no-repeat;
+}
+.wolf__body--right {
+  left: -13px;
+  background: url('./assets/img/wolf/wolf_right.png') center / contain no-repeat;
+}
+
+.wolf__hands {
+  position: absolute;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+}
+.wolf__hands-left--down {
+  top: 75px;
+  left: 0;
+
+  background: url('./assets/img/wolf/bottom_left.png') center / contain
+    no-repeat;
+}
+.wolf__hands-left--up {
+  top: 3px;
+  left: 0;
+  background: url('./assets/img/wolf/top_left.png') center / contain no-repeat;
+}
+
+.wolf__hands-right--down {
+  top: 75px;
+  right: 0;
+  background: url('./assets/img/wolf/right_bottom.png') center / contain
+    no-repeat;
+}
+.wolf__hands-right--up {
+  top: 3px;
+  right: 0;
+  background: url('./assets/img/wolf/right_top.png') center / contain no-repeat;
+}
