@@ -1,7 +1,29 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 500px;
+  height: 300px;
+}
+
+.screen {
+  display: flex;
+  align-items: center;
+  height: 250px;
 }
 
 .wolf {
@@ -15,17 +37,18 @@ body {
 }
 
 .wolf__body {
-  position: relative;
+  position: absolute;
 
   width: 100px;
   height: inherit;
 }
 .wolf__body--left {
-  left: 13px;
+  left: 40px;
+
   background: url('./assets/img/wolf/wolf_left.png') center / contain no-repeat;
 }
 .wolf__body--right {
-  left: -13px;
+  left: 115px;
   background: url('./assets/img/wolf/wolf_right.png') center / contain no-repeat;
 }
 
@@ -35,27 +58,232 @@ body {
   width: 50px;
   height: 50px;
 }
-.wolf__hands-left--down {
+.wolf__hands--left--down {
   top: 75px;
   left: 0;
 
   background: url('./assets/img/wolf/bottom_left.png') center / contain
     no-repeat;
 }
-.wolf__hands-left--up {
+.wolf__hands--left--up {
   top: 3px;
   left: 0;
   background: url('./assets/img/wolf/top_left.png') center / contain no-repeat;
 }
 
-.wolf__hands-right--down {
+.wolf__hands--right--down {
   top: 75px;
   right: 0;
   background: url('./assets/img/wolf/right_bottom.png') center / contain
     no-repeat;
 }
-.wolf__hands-right--up {
+.wolf__hands--right--up {
   top: 3px;
   right: 0;
   background: url('./assets/img/wolf/right_top.png') center / contain no-repeat;
+}
+
+.none {
+  display: none;
+}
+
+/* trays */
+
+.trays {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 110px;
+  height: inherit;
+  padding: 35px 0 110px 0;
+}
+
+.tray {
+  position: relative;
+
+  display: flex;
+
+  width: 110px;
+  height: 30px;
+}
+
+.tray__item {
+  /*   position: absolute; */
+
+  background-color: darkgoldenrod;
+  height: 7px;
+}
+
+.tray-left .tray__item--horizontal {
+  width: 40px;
+}
+
+.tray-left .tray__item--tilted,
+.tray-left .tray__egg-path {
+  position: absolute;
+  top: 14px;
+  left: 35px;
+
+  width: 70px;
+
+  transform: rotate(25deg);
+}
+
+.tray-left .tray__egg-path {
+  top: -6px;
+  left: 40px;
+
+  height: 22px;
+  width: 85px;
+
+  background: none;
+  border: 1px solid green;
+}
+
+.tray-left .tray__item--horizontal::after {
+  position: absolute;
+  top: -42px;
+
+  left: 0px;
+
+  content: '';
+
+  width: 45px;
+  height: 45px;
+
+  background: url('./assets/img/chicken_right.jpg') center / contain no-repeat;
+}
+
+.tray-right {
+  flex-direction: row-reverse;
+}
+
+.tray-right .tray__item--horizontal {
+  position: relative;
+
+  width: 40px;
+}
+
+.tray-right .tray__item--tilted,
+.tray-right .tray__egg-path {
+  position: absolute;
+  top: 14px;
+  right: 35px;
+  width: 70px;
+
+  transform: rotate(-25deg);
+}
+
+.tray-right .tray__egg-path {
+  top: -3px;
+  right: 44px;
+  z-index: 10;
+
+  height: 22px;
+  width: 85px;
+
+  background: none;
+  border: 1px solid green;
+}
+
+.tray-right .tray__item--horizontal::after {
+  position: absolute;
+  top: -40px;
+  right: 0px;
+
+  content: '';
+
+  width: 45px;
+  height: 45px;
+
+  background: url('./assets/img/chicken_left.jpg') center / contain no-repeat;
+}
+
+/* egg */
+.egg {
+  position: absolute;
+  top: 0;
+
+  width: 15px;
+  height: 20px;
+
+  background: url('./assets/img/egg.jpg') center / contain no-repeat;
+
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 3s;
+}
+
+.egg--left {
+  left: 0;
+  animation-name: egg_moves_left;
+}
+
+@keyframes egg_moves_left {
+  0% {
+    left: 0;
+    transform: rotate(0);
+  }
+  100% {
+    left: 70px;
+    transform: rotate(360deg);
+  }
+}
+
+.egg--right {
+  right: 0;
+  animation-name: egg_moves_right;
+}
+
+@keyframes egg_moves_right {
+  0% {
+    right: 0;
+    transform: rotate(0);
+  }
+  100% {
+    right: 70px;
+    transform: rotate(-360deg);
+  }
+}
+
+/* control__button */
+
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  height: inherit;
+}
+
+.control__button {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background-color: red;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: all 0.1s;
+}
+
+.control__button:hover {
+  border: 2px solid blue;
+}
+
+.control__button:active,
+.control__button--active {
+  transform: scale(0.93);
+
+  background-color: blue;
+
+  transform: scale(0.93);
 }

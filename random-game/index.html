@@ -9,16 +9,118 @@
 
     <title>Random-game</title>
   </head>
+
   <body>
-    <div class="wolf">
-      <div class="wolf__hands wolf__hands-left--down"></div>
-      <div class="wolf__hands wolf__hands-left--up"></div>
+    <div class="game">
+      <div class="control control--left">
+        <button
+          class="control__button control__button--left--up"
+          data-direction="left"
+          data-action="left-up"
+        >
+          R
+        </button>
+        <button
+          class="control__button control__button--left--down"
+          data-direction="left"
+          data-action="left-down"
+        >
+          F
+        </button>
+      </div>
 
-      <div class="wolf__body wolf__body--left"></div>
-      <div class="wolf__body wolf__body--right"></div>
+      <div class="screen">
+        <div class="trays trays-left">
+          <div class="tray tray-left tray-left--up">
+            <div class="tray__item tray__item--horizontal"></div>
 
-      <div class="wolf__hands wolf__hands-right--down"></div>
-      <div class="wolf__hands wolf__hands-right--up"></div>
+            <div class="tray__item tray__egg-path tray__egg-path--left--up">
+              <!--   <div class="egg egg--left"></div> -->
+            </div>
+
+            <div class="tray__item tray__item--tilted"></div>
+          </div>
+          <div class="tray tray-left tray-left--down">
+            <div class="tray__item tray__item--horizontal"></div>
+            <div class="tray__item tray__egg-path tray__egg-path--left--down">
+              <!--   <div class="egg egg--left"></div> -->
+            </div>
+            <div class="tray__item tray__item--tilted"></div>
+          </div>
+        </div>
+
+        <div class="wolf">
+          <div
+            class="wolf-part wolf__hands wolf__hands--left--down none"
+            data-action="left-down"
+          ></div>
+          <div
+            class="wolf-part wolf__hands wolf__hands--left--up none"
+            data-action="left-up"
+          ></div>
+
+          <div
+            class="wolf-part wolf__body wolf__body--left none"
+            data-direction="left"
+          ></div>
+          <div
+            class="wolf-part wolf__body wolf__body--right"
+            data-direction="right"
+          ></div>
+
+          <div
+            class="wolf-part wolf__hands wolf__hands--right--down"
+            data-action="right-down"
+          ></div>
+          <div
+            class="wolf-part wolf__hands wolf__hands--right--up none"
+            data-action="right-up"
+          ></div>
+        </div>
+
+        <div class="trays trays-right">
+          <div class="tray tray-right tray-right--up">
+            <div class="tray__item tray__item--tilted"></div>
+
+            <div class="tray__item tray__egg-path tray__egg-path--right--up">
+              <!--  <div class="egg egg--right"></div> -->
+            </div>
+
+            <div class="tray__item tray__item--horizontal"></div>
+          </div>
+          <div class="tray tray-right tray-right--down">
+            <div class="tray__item tray__item--tilted"></div>
+
+            <div class="tray__item tray__egg-path tray__egg-path--right--down">
+              <!--   <div class="egg egg--right"></div> -->
+            </div>
+
+            <div class="tray__item tray__item--horizontal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="control control--right">
+        <button
+          class="control__button control__button--right--up"
+          data-direction="right"
+          data-action="right-up"
+        >
+          U
+        </button>
+        <button
+          class="control__button control__button--right--down control__button--active"
+          data-direction="right"
+          data-action="right-down"
+        >
+          H
+        </button>
+      </div>
     </div>
+
+    <script type="module" src="js/control.js"></script>
+    <script type="module" src="js/egg.js"></script>
+    <script type="module" src="js/state.js"></script>
+    <script type="module" src="js/game.js"></script>
   </body>
 </html>
