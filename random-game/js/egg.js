@@ -1,15 +1,17 @@
 import state from './state.js';
+import { showScore, showLife } from './helpers.js';
 
+const controlButton = document.querySelectorAll('.control__button');
 class Egg {
   constructor(tray, animationDuration, btn) {
     this.tray = tray;
-    console.log(this.tray);
+    console.log(tray, animationDuration);
     this.animationDuration = animationDuration;
     this.element = document.createElement('div');
     this.parent = document.querySelector(`.tray__egg-path--${this.tray}`);
 
     this._addEgg();
-    this.isCatch();
+    this._isCatch();
   }
 
   _addEgg() {
@@ -24,30 +26,22 @@ class Egg {
     this.element.remove();
   }
 
-  isCatch() {
-    const controlButton = document.querySelectorAll('.control__button');
+  _isCatch() {
     setTimeout(() => {
       controlButton.forEach((btn) => {
         if (btn.classList.contains(`control__button--${this.tray}`)) {
           if (btn.classList.contains('control__button--active')) {
             state.setState({ score: state.getState().score + 1 });
+            showScore();
           } else {
             state.setState({ life: state.getState().life - 1 });
+            showLife();
           }
-          this._remove();
         }
       });
-    }, this.animationDuration * 1000);
+      this._remove();
+    }, this.animationDuration * 1000 + 20);
   }
 }
 
 export default Egg;
-
-/* const arr = ['left--down', 'right--up', 'left--up', 'right--down'];
-let i = 0;
-setInterval(() => {
-  new egg(arr[i], 1);
-  i++;
-  if (i >= arr.length) i = 0;
-}, 2000);
- */

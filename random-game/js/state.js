@@ -2,10 +2,11 @@ class State {
   constructor() {
     this.state = {
       score: 0,
-      life: 2,
+      life: 3,
       variants: ['left--down', 'right--up', 'left--up', 'right--down'],
       frequency: 2,
       speed: 2,
+      timerId: null,
     };
   }
 

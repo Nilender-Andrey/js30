@@ -9,21 +9,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 100vh;
 }
 
 .game {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 50px;
 
-  width: 500px;
-  height: 300px;
+  height: 600px;
+  width: 962px;
+
+  background: url('./assets/img/game.jpg') center no-repeat;
 }
 
 .screen {
+  position: relative;
+
   display: flex;
-  align-items: center;
-  height: 250px;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding-bottom: 30px;
+  height: 363px;
+  width: 506px;
+
+  background: url('./assets/img/fon.jpg') center / contain no-repeat;
 }
 
 .wolf {
@@ -33,7 +46,7 @@ body {
   justify-content: center;
 
   width: 250px;
-  height: 125px;
+  height: 170px;
 }
 
 .wolf__body {
@@ -55,31 +68,31 @@ body {
 .wolf__hands {
   position: absolute;
   z-index: 10;
-  width: 50px;
-  height: 50px;
+  width: 57px;
+  height: 57px;
 }
 .wolf__hands--left--down {
-  top: 75px;
-  left: 0;
+  top: 65px;
+  left: -17px;
 
   background: url('./assets/img/wolf/bottom_left.png') center / contain
     no-repeat;
 }
 .wolf__hands--left--up {
-  top: 3px;
-  left: 0;
+  top: -10px;
+  left: -16px;
   background: url('./assets/img/wolf/top_left.png') center / contain no-repeat;
 }
 
 .wolf__hands--right--down {
   top: 75px;
-  right: 0;
+  right: -10px;
   background: url('./assets/img/wolf/right_bottom.png') center / contain
     no-repeat;
 }
 .wolf__hands--right--up {
-  top: 3px;
-  right: 0;
+  top: 0px;
+  right: -20px;
   background: url('./assets/img/wolf/right_top.png') center / contain no-repeat;
 }
 
@@ -96,7 +109,7 @@ body {
 
   width: 110px;
   height: inherit;
-  padding: 35px 0 110px 0;
+  padding: 150px 0 90px 0;
 }
 
 .tray {
@@ -131,28 +144,28 @@ body {
 }
 
 .tray-left .tray__egg-path {
-  top: -6px;
+  top: 0px;
   left: 40px;
 
   height: 22px;
   width: 85px;
 
   background: none;
-  border: 1px solid green;
 }
 
 .tray-left .tray__item--horizontal::after {
   position: absolute;
-  top: -42px;
 
-  left: 0px;
+  z-index: 10;
+  top: -66px;
+  left: -13px;
 
   content: '';
 
-  width: 45px;
-  height: 45px;
+  width: 80px;
+  height: 80px;
 
-  background: url('./assets/img/chicken_right.jpg') center / contain no-repeat;
+  background: url('./assets/img/chicken_left.png') center / contain no-repeat;
 }
 
 .tray-right {
@@ -176,7 +189,7 @@ body {
 }
 
 .tray-right .tray__egg-path {
-  top: -3px;
+  top: 3px;
   right: 44px;
   z-index: 10;
 
@@ -184,34 +197,36 @@ body {
   width: 85px;
 
   background: none;
-  border: 1px solid green;
 }
 
 .tray-right .tray__item--horizontal::after {
   position: absolute;
-  top: -40px;
-  right: 0px;
+  z-index: 10;
+  top: -66px;
+  left: -27px;
 
   content: '';
 
-  width: 45px;
-  height: 45px;
+  width: 80px;
+  height: 80px;
 
-  background: url('./assets/img/chicken_left.jpg') center / contain no-repeat;
+  background: url('./assets/img/chicken_right.png') center / contain no-repeat;
 }
 
 /* egg */
 .egg {
   position: absolute;
   top: 0;
+  z-index: 10;
 
   width: 15px;
   height: 20px;
 
-  background: url('./assets/img/egg.jpg') center / contain no-repeat;
+  background: url('./assets/img/egg.png') center / contain no-repeat;
 
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  animation-play-state: running;
   animation-duration: 3s;
 }
 
@@ -250,16 +265,27 @@ body {
 /* control__button */
 
 .control {
+  position: relative;
+  top: -61px;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 42px;
 
   height: inherit;
 }
 
+.control--left {
+  left: -39px;
+}
+.control--right {
+  left: 38px;
+}
+
 .control__button {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 
   border-radius: 50%;
   border: none;
@@ -286,4 +312,75 @@ body {
   background-color: blue;
 
   transform: scale(0.93);
+}
+
+/* info */
+.info {
+  position: absolute;
+  top: 5px;
+  right: 50px;
+}
+
+.info__score {
+  font-size: 34px;
+}
+
+.info__life {
+  font-size: 17px;
+}
+
+/** Footer **/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 2%;
+
+  width: 100%;
+  max-width: 1400px;
+  height: 60px;
+
+  font-size: 2rem;
+}
+
+.footer-info {
+  display: flex;
+  width: 250px;
+
+  justify-content: space-between;
+}
+
+.footer-info__link {
+  text-decoration: none;
+  color: black;
+}
+
+.footer__school-link {
+  padding-left: 17px;
+
+  width: 100px;
+  height: 80%;
+
+  background: url('./assets/svg/rs_school_js.svg') center no-repeat;
+
+  text-decoration: none;
+}
+
+.footer__school-link:hover {
+  color: #eb5113;
+}
+
+@media (max-width: 480px) {
+  .header,
+  .footer {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }

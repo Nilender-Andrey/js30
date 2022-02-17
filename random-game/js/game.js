@@ -1,36 +1,27 @@
 import Egg from './egg.js';
 import state from './state.js';
+import { randomNumber, gameOver } from './helpers.js';
 
 class Game {
   constructor() {
-    this._gameEngine();
-    this.interval;
-    state.setState({ life: 2, frequency: 2, speed: 2 });
+    this.timerId;
+    this.tick();
+    this.infoScore = document.querySelector('.info__score');
   }
 
-  _gameEngine() {
-    this.interval = setInterval(() => {
-      console.log(state.getState().life);
-      if (state.getState().life <= 0) {
-        document.querySelectorAll('.egg').forEach((item) => item.remove());
+  tick() {
+    if (state.getState().life <= 1) {
+      gameOver(this.timerId);
+      return;
+    }
+    this.timerId = setTimeout(
+      () => this.tick(),
+      state.getState().frequency * 1000,
+    );
+    console.log('tick');
 
-        clearInterval(this.interval);
-        console.log('Игра окончена');
-      } else {
-        new Egg(
-          state.getState().variants[this._randomNumber()],
-          state.getState().speed,
-        );
-      }
-    }, state.getState().frequency * 1000);
-  }
-
-  _randomNumber() {
-    Math.floor(Math.random() * 4);
-
-    return Math.floor(Math.random() * 4);
+    new Egg(state.getState().variants[randomNumber()], state.getState().speed);
   }
 }
 
-let game = new Game();
-/* clearInterval(game.interval); */
+new Game();
