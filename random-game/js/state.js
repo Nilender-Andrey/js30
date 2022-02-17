@@ -1,5 +1,18 @@
 class State {
   constructor() {
+    this.state;
+    this.reset();
+  }
+
+  getState() {
+    return this.state;
+  }
+
+  setState(payload) {
+    this.state = { ...this.state, ...payload };
+  }
+
+  reset() {
     this.state = {
       score: 0,
       life: 3,
@@ -7,16 +20,9 @@ class State {
       frequency: 2,
       speed: 2,
       timerId: null,
+      winResult: 10,
+      stopGame: false,
     };
-  }
-
-  getState() {
-    /*  console.log(this.state); */
-    return this.state;
-  }
-
-  setState(payload) {
-    this.state = { ...this.state, ...payload };
   }
 }
 

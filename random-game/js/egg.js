@@ -34,8 +34,10 @@ class Egg {
             state.setState({ score: state.getState().score + 1 });
             showScore();
           } else {
-            state.setState({ life: state.getState().life - 1 });
-            showLife();
+            if (!state.getState().stopGame) {
+              state.setState({ life: state.getState().life - 1 });
+              showLife();
+            }
           }
         }
       });
