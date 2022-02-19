@@ -13,7 +13,8 @@ class Database {
   }
 
   static get() {
-    return JSON.parse(localStorage.result);
+    if (localStorage.result) return JSON.parse(localStorage.result);
+    else return [];
   }
 }
 

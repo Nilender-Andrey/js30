@@ -12,7 +12,6 @@ export function showScore() {
 
 export function showLife() {
   const life = state.getState().life;
-  console.log('showLife', life);
 
   if (life <= 0) {
     lifeElem.innerText = '';
@@ -62,27 +61,27 @@ export function playSound(filename) {
 export function speedСalculation() {
   const { score, baseSpeed } = state.getState();
   let res = baseSpeed - (baseSpeed * score === 0 ? 1 : score) / 100;
-  res = res < 1.5 ? 1.5 : res;
-  console.log('скорость', res);
+  res = res < 1.6 ? 1.6 : res;
+
   return res;
 }
 
 export function frequencyСalculation() {
   const { score, frequency } = state.getState();
   let res = frequency - (frequency * score === 0 ? 1 : score) / 100;
-  console.log('частота', res);
-  res = res < 0.5 ? 0.5 : res;
+
+  res = res < 0.6 ? 0.6 : res;
+
   return res;
 }
 
 export function bonuses() {
-  const { score, frequency, baseSpeed } = state.getState();
+  const { score } = state.getState();
 
   if (score % 100 === 0 && score != 0) {
     state.setState({
       life: 3,
-      frequency: frequency * (1 - score / 1000),
-      baseSpeed: baseSpeed * (1 - score / 1000),
     });
+    showLife();
   }
 }

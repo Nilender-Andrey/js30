@@ -39,8 +39,7 @@ body {
   width: 506px;
 
   border-radius: 10px;
-  /* 
-  background: url('./assets/img/fon.jpg') center / contain no-repeat; */
+
   background: url('./assets/img/fon_color_2.jpg') center / contain no-repeat;
 }
 
@@ -127,8 +126,6 @@ body {
 }
 
 .tray__item {
-  /*   position: absolute; */
-
   background-color: darkgoldenrod;
   height: 7px;
 }
@@ -397,14 +394,14 @@ body {
   font-size: 40px;
   font-weight: 700;
 
-  background-color: #62dff1;
+  background-color: #fff;
 }
 
 .game-result--win {
-  background: #62dff1 url('./assets/img/fon_win.png') bottom / 55% no-repeat;
+  background: #fff url('./assets/img/fon_win.png') bottom / 55% no-repeat;
 }
 .game-result--lose {
-  background: #62dff1 url('./assets/img/fon_lose.png') bottom / 80% no-repeat;
+  background: #fff url('./assets/img/fon_lose.png') bottom / 80% no-repeat;
 }
 
 .game-result__result,
@@ -524,5 +521,6 @@ body {
 
   border-radius: 10px;
 
+  /*  */
   background: url('./assets/img/grass.png') bottom / 106% 70% no-repeat;
 }

@@ -6,7 +6,6 @@ const controlButton = document.querySelectorAll('.control__button');
 class Egg {
   constructor(tray, animationDuration, btn) {
     this.tray = tray;
-    console.log(tray, animationDuration);
     this.animationDuration = animationDuration;
     this.element = document.createElement('div');
     this.parent = document.querySelector(`.tray__egg-path--${this.tray}`);
