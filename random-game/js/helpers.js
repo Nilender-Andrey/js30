@@ -74,3 +74,15 @@ export function frequencyСalculation() {
   res = res < 0.5 ? 0.5 : res;
   return res;
 }
+
+export function bonuses() {
+  const { score, frequency, baseSpeed } = state.getState();
+
+  if (score % 100 === 0 && score != 0) {
+    state.setState({
+      life: 3,
+      frequency: frequency * (1 - score / 1000),
+      baseSpeed: baseSpeed * (1 - score / 1000),
+    });
+  }
+}

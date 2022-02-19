@@ -380,6 +380,7 @@ body {
 }
 
 /* game-result */
+.game-info,
 .game-result,
 .statistics {
   position: absolute;
@@ -439,13 +440,15 @@ body {
 }
 
 .settings__button {
-  width: 80px;
-  height: 80px;
-
+  width: 100px;
+  height: 40px;
   border-radius: 50%;
   background-color: #c7bfaa;
 
   box-shadow: 0px 0px 5px 2px #796f65;
+
+  outline: none;
+  border: none;
 
   font-size: 20px;
 
@@ -454,6 +457,7 @@ body {
   transition: 0.5s all;
 }
 
+.settings__button--info:active,
 .settings__button--results:active {
   box-shadow: 0px 0px 0px 2px #796f65;
 }
@@ -466,6 +470,7 @@ body {
   pointer-events: none;
 }
 
+.settings__button--info--run,
 .settings__button--results--run {
   box-shadow: 0px 0px 0px 2px greenyellow;
   color: greenyellow;
@@ -474,8 +479,8 @@ body {
   pointer-events: none;
 }
 
-/* statistics */
-
+/* statistics / info */
+.game-info--open,
 .statistics--open {
   display: block;
   z-index: 200;
@@ -483,8 +488,22 @@ body {
   text-align: center;
 }
 
+.game-info__title,
 .statistics__title {
   font-size: 32px;
+  padding-bottom: 10px;
+}
+
+.game-info__list {
+  margin: 0 auto;
+  width: 90%;
+  padding: 20px 0 20px 0;
+
+  font-size: 24px;
+  text-align: left;
+}
+
+.game-info__list li {
   padding-bottom: 10px;
 }
 

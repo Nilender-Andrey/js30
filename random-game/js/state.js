@@ -1,5 +1,3 @@
-import { speedСalculation } from './helpers.js';
-
 const config = {
   score: 0,
   life: 3,
@@ -7,7 +5,7 @@ const config = {
   frequency: 1.5,
   baseSpeed: 2.5,
   timerId: null,
-  winResult: 100,
+  winResult: 1000,
   gameStopped: false,
   timeShowResult: 2500,
 };

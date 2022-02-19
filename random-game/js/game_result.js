@@ -1,6 +1,6 @@
 import state from './state.js';
 import { showScore, showLife } from './helpers.js';
-import { startGameBtm, resultGameBtm } from './control.js';
+import { startGameBtm, resultGameBtm, infoGameBtm } from './control.js';
 
 class GameResult {
   constructor(result, score) {
@@ -13,13 +13,14 @@ class GameResult {
   }
 
   show() {
-    const view = `<div class="game-result game-result--${this.result}">
+    const view = `
            <p class="game-result__result">You ${
              this.result === 'win' ? 'WIN' : 'LOSE'
            }!</p>
            <p class="game-result__score">${this.score}</p>
-             </div>`;
+             `;
 
+    this.element.className = `game-result game-result--${this.result}`;
     this.element.innerHTML = view;
     this.parent.append(this.element);
 
@@ -29,6 +30,7 @@ class GameResult {
       showLife();
       startGameBtm.classList.remove('settings__button--start--run');
       resultGameBtm.classList.remove('settings__button--results--run');
+      infoGameBtm.classList.remove('settings__button--info--run');
       this.element.remove();
     }, this.timeShowResult);
   }

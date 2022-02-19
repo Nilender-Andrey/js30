@@ -4,6 +4,7 @@ const game = document.querySelector('.game');
 
 export const startGameBtm = game.querySelector('.settings__button--start');
 export const resultGameBtm = game.querySelector('.settings__button--results');
+export const infoGameBtm = game.querySelector('.settings__button--info');
 
 const controlButton = game.querySelectorAll('.control__button');
 const wolfParts = game.querySelectorAll('.wolf-part');
