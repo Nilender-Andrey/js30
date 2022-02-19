@@ -36,8 +36,13 @@ export function gameOver() {
       item.remove();
     });
 
-    if (live < 1) new GameResult('lose', score);
-    else new GameResult('win', score);
+    if (live < 1) {
+      playSound('lose');
+      new GameResult('lose', score);
+    } else {
+      playSound('win');
+      new GameResult('win', score);
+    }
     Database.set(score);
     return true;
   }
@@ -47,4 +52,25 @@ export function gameOver() {
 export function randomNumber() {
   const num = Math.floor(Math.random() * 4);
   return num;
+}
+
+export function playSound(filename) {
+  const sound = new Audio(`./assets/audio/${filename}.mp3`);
+  sound.play();
+}
+
+export function speedСalculation() {
+  const { score, baseSpeed } = state.getState();
+  let res = baseSpeed - (baseSpeed * score === 0 ? 1 : score) / 100;
+  res = res < 1.5 ? 1.5 : res;
+  console.log('скорость', res);
+  return res;
+}
+
+export function frequencyСalculation() {
+  const { score, frequency } = state.getState();
+  let res = frequency - (frequency * score === 0 ? 1 : score) / 100;
+  console.log('частота', res);
+  res = res < 0.5 ? 0.5 : res;
+  return res;
 }

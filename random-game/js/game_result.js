@@ -1,11 +1,12 @@
 import state from './state.js';
 import { showScore, showLife } from './helpers.js';
+import { startGameBtm, resultGameBtm } from './control.js';
 
 class GameResult {
   constructor(result, score) {
     this.result = result;
     this.score = score;
-
+    this.timeShowResult = state.getState().timeShowResult;
     this.element = document.createElement('div');
     this.parent = document.querySelector('.screen');
     this.show();
@@ -24,11 +25,12 @@ class GameResult {
 
     setTimeout(() => {
       state.reset();
-      this.element.remove();
-      state.reset();
       showScore();
       showLife();
-    }, 5000);
+      startGameBtm.classList.remove('settings__button--start--run');
+      resultGameBtm.classList.remove('settings__button--results--run');
+      this.element.remove();
+    }, this.timeShowResult);
   }
 }
 

@@ -1,5 +1,6 @@
 import state from './state.js';
 import { showScore, showLife } from './helpers.js';
+import { playSound } from './helpers.js';
 
 const controlButton = document.querySelectorAll('.control__button');
 class Egg {
@@ -31,12 +32,15 @@ class Egg {
       controlButton.forEach((btn) => {
         if (btn.classList.contains(`control__button--${this.tray}`)) {
           if (btn.classList.contains('control__button--active')) {
+            playSound('catch');
             state.setState({ score: state.getState().score + 1 });
             showScore();
           } else {
-            if (!state.getState().stopGame) {
+            if (!state.getState().gameStopped) {
               state.setState({ life: state.getState().life - 1 });
+
               showLife();
+              !state.getState().gameStopped && playSound('break');
             }
           }
         }

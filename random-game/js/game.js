@@ -1,23 +1,28 @@
 import Egg from './egg.js';
 import state from './state.js';
 import { randomNumber, gameOver } from './helpers.js';
-
+import { startGameBtm, resultGameBtm } from './control.js';
+import { statistics } from './statistics.js';
+import {
+  playSound,
+  speedСalculation,
+  frequencyСalculation,
+} from './helpers.js';
 class Game {
   constructor() {
     this.timerId;
     this.intervalId;
-    this.tick();
-    this._controlResultGame();
-    this.infoScore = document.querySelector('.info__score');
+    this._addListener();
   }
 
-  tick() {
+  _tick() {
     this.timerId = setTimeout(
-      () => this.tick(),
-      state.getState().frequency * 1000,
+      this._tick.bind(this),
+      frequencyСalculation() * 1000,
     );
 
-    new Egg(state.getState().variants[randomNumber()], state.getState().speed);
+    playSound('add_egg');
+    new Egg(state.getState().variants[randomNumber()], speedСalculation());
   }
 
   _controlResultGame() {
@@ -25,9 +30,23 @@ class Game {
       if (gameOver()) {
         clearTimeout(this.timerId);
         clearInterval(this.intervalId);
-        state.setState({ stopGame: true });
+        this.timerId = this.intervalId = null;
+        state.setState({ gameStopped: true });
       }
     }, 10);
+  }
+
+  _addListener() {
+    startGameBtm.addEventListener('click', this._startGame.bind(this));
+  }
+
+  _startGame() {
+    playSound('start');
+    statistics.remove();
+    startGameBtm.classList.add('settings__button--start--run');
+    resultGameBtm.classList.add('settings__button--results--run');
+    this._tick();
+    this._controlResultGame();
   }
 }
 

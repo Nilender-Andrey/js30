@@ -1,3 +1,17 @@
+import { speedСalculation } from './helpers.js';
+
+const config = {
+  score: 0,
+  life: 3,
+  variants: ['left--down', 'right--up', 'left--up', 'right--down'],
+  frequency: 1.5,
+  baseSpeed: 2.5,
+  timerId: null,
+  winResult: 100,
+  gameStopped: false,
+  timeShowResult: 2500,
+};
+
 class State {
   constructor() {
     this.state;
@@ -13,16 +27,7 @@ class State {
   }
 
   reset() {
-    this.state = {
-      score: 0,
-      life: 3,
-      variants: ['left--down', 'right--up', 'left--up', 'right--down'],
-      frequency: 2,
-      speed: 2,
-      timerId: null,
-      winResult: 10,
-      stopGame: false,
-    };
+    this.state = { ...config };
   }
 }
 

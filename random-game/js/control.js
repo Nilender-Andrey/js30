@@ -1,8 +1,12 @@
+import { playSound } from './helpers.js';
+
 const game = document.querySelector('.game');
+
+export const startGameBtm = game.querySelector('.settings__button--start');
+export const resultGameBtm = game.querySelector('.settings__button--results');
+
 const controlButton = game.querySelectorAll('.control__button');
 const wolfParts = game.querySelectorAll('.wolf-part');
-const wolfBody = game.querySelectorAll('.wolf__body');
-const wolfHands = game.querySelectorAll('.wolf__hands');
 
 function handlerClick(event) {
   const target = event.target;
@@ -53,6 +57,7 @@ function activeButton(hands) {
       btn.classList.add('control__button--active');
     } else btn.classList.remove('control__button--active');
   });
+  playSound('btn');
 }
 
 game.addEventListener('mousedown', handlerClick);

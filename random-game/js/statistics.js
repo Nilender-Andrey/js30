@@ -1,4 +1,5 @@
 import Database from './database.js';
+import { playSound } from './helpers.js';
 
 class Statistics {
   constructor() {
@@ -31,17 +32,20 @@ class Statistics {
       .join('');
   }
 
-  _remove() {
-    this.element.remove();
-    this.element = null;
+  remove() {
+    if (this.element) {
+      this.element.remove();
+      this.element = null;
+    }
   }
 
   trigger() {
-    this.element ? this._remove() : this._show();
+    playSound('btn');
+    this.element ? this.remove() : this._show();
   }
 }
 
-const statistics = new Statistics();
+export const statistics = new Statistics();
 
 const resultBtn = document.querySelector('.settings__button--results');
 
