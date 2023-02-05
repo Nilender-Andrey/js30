@@ -120,7 +120,7 @@ body {
   height: 43px;
   margin-right: 9.5%;
 
-  background: url('./assets/img/logo.png') center no-repeat;
+  background: url('./assets/img/rootLogo.png') center no-repeat;
 }
 
 .nav {
@@ -475,11 +475,7 @@ body {
   width: 24%;
   height: 100%;
 
-  background: linear-gradient(
-    270deg,
-    #ffffff 9.75%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(270deg, #ffffff 9.75%, rgba(255, 255, 255, 0) 100%);
 }
 
 .item-wrap {
@@ -658,7 +654,7 @@ body {
   width: 49px;
   height: 43px;
 
-  background: url('./assets/img/logo.png') center no-repeat;
+  background: url('./assets/img/rootLogo.png') center no-repeat;
 }
 
 .info__name {
