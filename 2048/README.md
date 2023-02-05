@@ -1,4 +1,4 @@
-# Игра 2048
+# [Игра 2048](https://nilender-andrey.github.io/JavaScript/game_2048/index.html)
 
 ## **Техническое задание**
 
