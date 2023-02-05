@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles/normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <title>Movie App</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="header-logo">
+        <span class="header-logo__text_color_orange">m</span>ovie
+        <span class="header-logo__text_color_orange">a</span>pp
+        <img
+          class="header-logo__img"
+          src="assets/img/Video-film.svg.png"
+          alt="logo"
+        />
+      </h1>
+    </header>
+
+    <main class="main" id="main"></main>
+
+    <footer class="footer">
+      <div class="footer-info">
+        <p class="footer-info__сopyright">©</p>
+        <p class="footer-info__year">2022</p>
+        <a
+          class="footer-info__link link"
+          href="https://github.com/Nilender-Andrey"
+          target="_blank"
+          >github</a
+        >
+      </div>
+
+      <a
+        class="footer__school-link link"
+        href="https://rs.school/js-stage0/"
+        target="_blank"
+      ></a>
+    </footer>
+    <script type="module" src="js/get_movies.js"></script>
+    <script type="module" src="js/card.js"></script>
+    <script type="module" src="js/search.js"></script>
+    <script type="module" src="js/control_render_cards.js"></script>
+    <script type="module" src="js/infinite_scrolling.js"></script>
+    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/state.js"></script>
+  </body>
+</html>

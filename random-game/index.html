@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <title>Random-game</title>
+  </head>
+
+  <body>
+    <div class="game">
+      <div class="control control--left">
+        <button
+          class="control__button control__button--left--up"
+          data-direction="left"
+          data-action="left-up"
+        >
+          R
+        </button>
+        <button
+          class="control__button control__button--left--down"
+          data-direction="left"
+          data-action="left-down"
+        >
+          F
+        </button>
+      </div>
+
+      <div class="screen">
+        <div class="info">
+          <div class="info__score">0000</div>
+          <div class="info__life">🐤🐤🐤</div>
+        </div>
+
+        <div class="trays trays-left">
+          <div class="tray tray-left tray-left--up">
+            <div class="tray__item tray__item--horizontal"></div>
+
+            <div
+              class="tray__item tray__egg-path tray__egg-path--left--up"
+            ></div>
+
+            <div class="tray__item tray__item--tilted"></div>
+          </div>
+          <div class="tray tray-left tray-left--down">
+            <div class="tray__item tray__item--horizontal"></div>
+            <div
+              class="tray__item tray__egg-path tray__egg-path--left--down"
+            ></div>
+            <div class="tray__item tray__item--tilted"></div>
+          </div>
+        </div>
+
+        <div class="wolf">
+          <div
+            class="wolf-part wolf__hands wolf__hands--left--down none"
+            data-action="left-down"
+          ></div>
+          <div
+            class="wolf-part wolf__hands wolf__hands--left--up none"
+            data-action="left-up"
+          ></div>
+
+          <div
+            class="wolf-part wolf__body wolf__body--left none"
+            data-direction="left"
+          ></div>
+          <div
+            class="wolf-part wolf__body wolf__body--right"
+            data-direction="right"
+          ></div>
+
+          <div
+            class="wolf-part wolf__hands wolf__hands--right--down"
+            data-action="right-down"
+          ></div>
+          <div
+            class="wolf-part wolf__hands wolf__hands--right--up none"
+            data-action="right-up"
+          ></div>
+        </div>
+
+        <div class="trays trays-right">
+          <div class="tray tray-right tray-right--up">
+            <div class="tray__item tray__item--tilted"></div>
+
+            <div
+              class="tray__item tray__egg-path tray__egg-path--right--up"
+            ></div>
+
+            <div class="tray__item tray__item--horizontal"></div>
+          </div>
+          <div class="tray tray-right tray-right--down">
+            <div class="tray__item tray__item--tilted"></div>
+
+            <div
+              class="tray__item tray__egg-path tray__egg-path--right--down"
+            ></div>
+
+            <div class="tray__item tray__item--horizontal"></div>
+          </div>
+        </div>
+
+        <div class="fon"></div>
+      </div>
+
+      <div class="control control--right">
+        <button
+          class="control__button control__button--right--up"
+          data-direction="right"
+          data-action="right-up"
+        >
+          U
+        </button>
+        <button
+          class="control__button control__button--right--down control__button--active"
+          data-direction="right"
+          data-action="right-down"
+        >
+          H
+        </button>
+      </div>
+      <div class="settings">
+        <button class="settings__button settings__button--start">Start</button>
+        <button class="settings__button settings__button--results">
+          Results
+        </button>
+        <button class="settings__button settings__button--info">Info</button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-info">
+        <p class="footer-info__сopyright">© 2022</p>
+
+        <a
+          class="footer-info__link"
+          href="https://github.com/Nilender-Andrey"
+          target="_blank"
+          >github</a
+        >
+      </div>
+
+      <a
+        class="footer__school-link"
+        href="https://rs.school/js-stage0/"
+        target="_blank"
+      ></a>
+    </footer>
+
+    <script type="module" src="js/state.js"></script>
+    <script type="module" src="js/control.js"></script>
+    <script type="module" src="js/egg.js"></script>
+
+    <script type="module" src="js/game.js"></script>
+    <script type="module" src="js/helpers.js"></script>
+    <script type="module" src="js/game_result.js"></script>
+    <script type="module" src="js/statistics.js"></script>
+    <script type="module" src="js/info.js"></script>
+  </body>
+</html>
