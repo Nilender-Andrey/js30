@@ -1,0 +1,129 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 320px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.control-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.icon {
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+.control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+.control-button .icon {
+  fill: lightgray;
+}
+.control-button:active {
+  transform: scale(0.9);
+}
+@media (hover: hover) and (pointer: fine) {
+  .control-button:hover .icon {
+    fill: gray;
+  }
+}
+
+.progress {
+  width: 100%;
+  height: 2px;
+  margin: 10px 0;
+  background-color: lightgray;
+  border-radius: 2px;
+}
+.progress__line {
+  height: inherit;
+  background-color: gray;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.control-track-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.current-track__image {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* track-items */
+.track-items__title {
+  padding: 0 0 10px 5px;
+  font-size: 14px;
+  color: darkgray;
+}
+
+.track-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.track-item__image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.track-item__titles {
+  flex: 1;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.track-item__name,
+.track-item__group {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-item__group {
+  margin-bottom: 5px;
+}
+
+.track-item__duration {
+  font-size: 11px;
+}
