@@ -6,6 +6,7 @@ body {
   width: 100vw;
   height: 100vh;
   padding: 10px;
+  background: lightgray;
 }
 
 .player {
@@ -18,7 +19,15 @@ body {
   height: fit-content;
 
   border-radius: 12px;
+  background: #fff;
   overflow: hidden;
+
+  -webkit-box-shadow: 0px 0px 8px 11px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0px 0px 8px 11px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 8px 11px rgba(0, 0, 0, 0.06);
+}
+.controls {
+  padding: 0 5px;
 }
 
 .control-panel {
@@ -26,47 +35,35 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 
-  width: 300px;
+  &--frist .control-button {
+    width: 30px;
+    height: 30px;
+  }
+  &--second .control-button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.control-panel__sound {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .icon {
-  padding: 5px;
-  width: 35px;
-  height: 35px;
-}
-
-.control-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transition: transform 0.25s ease;
-  cursor: pointer;
-
-  .icon {
-    fill: lightgray;
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      .icon {
-        fill: gray;
-      }
-    }
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .progress {
-  width: 100%;
-  height: 2px;
   margin: 10px 0;
+  width: 100%;
+  height: 8px;
 
   background-color: lightgray;
-  border-radius: 2px;
+  border-radius: 8px;
+  overflow: hidden;
 
   &__line {
     height: inherit;
@@ -95,6 +92,10 @@ body {
 }
 
 /* track-items */
+.track-items {
+  padding: 0 5px;
+}
+
 .track-items__title {
   padding: 0 0 10px 5px;
 
@@ -141,4 +142,80 @@ body {
 
 .track-item__duration {
   font-size: 11px;
+}
+
+.control-button__playing {
+  .pause_icon {
+    display: none;
+  }
+
+  &--play {
+    .pause_icon {
+      display: block;
+    }
+
+    .play_icon {
+      display: none;
+    }
+  }
+}
+
+.current-track__info {
+  padding: 5px;
+
+  color: darkgray;
+}
+
+/* control-button */
+.control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+
+  transition: transform 0.25s ease;
+  cursor: pointer;
+
+  .icon {
+    fill: lightgray;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.active {
+    .icon {
+      fill: gray;
+    }
+  }
+
+  .mute-icon,
+  .volume-quiet-icon,
+  .volume-medium-icon,
+  .volume-loud-icon {
+    display: none;
+  }
+
+  &--mute .mute-icon {
+    display: block;
+  }
+  &--volume-quiet .volume-quiet-icon {
+    display: block;
+  }
+  &--volume-medium .volume-medium-icon {
+    display: block;
+  }
+  &--volume-loud .volume-loud-icon {
+    display: block;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .icon {
+        fill: gray;
+      }
+    }
+  }
 }
