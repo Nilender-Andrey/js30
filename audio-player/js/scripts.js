@@ -5,11 +5,12 @@ class AudioController {
   constructor(tracks) {
     this.tracks = tracks;
     this.currentTrack = {};
+    this.player = document.getElementById('player');
     this.trackItemsWrapperElement = document.getElementById('track-items-wrapper');
     this.currentTrackElement = document.getElementById('current-track');
     this.timelineEndElement = document.getElementById('timeline-end');
     this.timelineStartElement = document.getElementById('timeline-start');
-    this.progressLine = document.getElementById('progress-line');
+    this.progressInput = document.getElementById('progress');
     this.playButton = document.getElementById('play');
     this.prevTrackButton = document.getElementById('prev-track');
     this.nextTrackButton = document.getElementById('next-track');
@@ -20,11 +21,16 @@ class AudioController {
     this.isPlaying = false;
     this.isRepeat = false;
     this.volume = 0.5;
+    this.isMute = false;
   }
 
-  init() {
-    this.renderTracks();
+  async init() {
+    this.player.classList.add('player--loading');
+
+    await this.renderTracks();
     this.initEvents();
+
+    this.player.classList.remove('player--loading');
   }
 
   initEvents() {
@@ -38,19 +44,39 @@ class AudioController {
     this.repeatButton.addEventListener('click', this.repeatHandler.bind(this));
     this.volumeInput.addEventListener('input', this.volumeHandler.bind(this));
     this.muteButton.addEventListener('click', this.muteHandler.bind(this));
+    this.progressInput.addEventListener('input', this.progressHandler.bind(this));
   }
 
-  muteHandler() {}
+  muteHandler() {
+    this.isMute = !this.isMute;
+    const { audio } = this.currentTrack;
+
+    if (!audio) return;
+
+    audio.volume = this.isMute ? 0 : this.volume;
+    this.volumeInput.value = this.isMute ? 0 : this.volume;
+
+    this.changeMuteButtonIcon(audio.volume);
+    this.changeInputStyle(this.volumeInput, audio.volume * 100);
+  }
 
   volumeHandler(event) {
-    console.log('volumeHandler');
     const { audio } = this.currentTrack;
     this.volume = event.target.value;
 
     if (!audio) return;
 
     audio.volume = this.volume;
+    this.isMute = this.volume === 0;
     this.changeMuteButtonIcon(this.volume);
+    this.changeInputStyle(this.volumeInput, audio.volume * 100);
+  }
+
+  progressHandler(event) {
+    const { audio, duration } = this.currentTrack;
+    if (!audio) return;
+    console.log(event.target.value);
+    audio.currentTime = (duration / 100) * event.target.value;
   }
 
   changeMuteButtonIcon(value) {
@@ -69,8 +95,12 @@ class AudioController {
     this.muteButton.className = `control-button control-button${modifier}`;
   }
 
-  renderTracks() {
-    Promise.all(
+  changeInputStyle(element, value) {
+    element.style.backgroundSize = `${value}% 100%`;
+  }
+
+  async renderTracks() {
+    await Promise.all(
       this.tracks.map((track) => {
         return new Promise((resolve) => {
           const audio = new Audio(`./assets/mp3/${track.id}.mp3`);
@@ -138,10 +168,6 @@ class AudioController {
   }
 
   setCurrentTrack(id) {
-    /*  if (this.currentTrack.id === +id) {
-      return;
-    }
- */
     const currentTrack = this.tracks.find((track) => track.id === +id);
 
     if (!currentTrack) {
@@ -163,7 +189,7 @@ class AudioController {
   setVolumeCurrentTrack(audio) {
     if (!audio) return;
 
-    audio.volume = this.volume;
+    audio.volume = this.isMute ? 0 : this.volume;
   }
 
   renderCurrentTrack() {
@@ -183,7 +209,7 @@ class AudioController {
     this.currentTrackElement.innerHTML = currentTrackStr;
     this.timelineStartElement.innerText = '00 : 00';
     this.timelineEndElement.innerText = getMinAndSecByDuration(duration);
-    this.progressLine.style.width = `0%`;
+    this.progressInput.value = 0;
 
     this.currentTrackUpdate(this.currentTrack);
   }
@@ -192,10 +218,13 @@ class AudioController {
     audio.addEventListener(
       'timeupdate',
       ({ target }) => {
+        console.log('timeupdate');
         const { currentTime } = target;
 
         this.timelineStartElement.innerText = getMinAndSecByDuration(currentTime);
-        this.progressLine.style.width = `${(currentTime * 100) / duration}%`;
+        this.progressInput.value = (currentTime * 100) / duration;
+
+        this.changeInputStyle(this.progressInput, this.progressInput.value);
       },
       { signal: this.removeEventListener('timeupdate') }
     );
