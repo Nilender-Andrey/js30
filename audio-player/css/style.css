@@ -1,25 +1,45 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   padding: 10px;
-  background: lightgray;
+  background-color: lightgray;
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
 }
 
 .player {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
   width: 320px;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 602px;
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
   box-shadow: 0px 0px 8px 11px rgba(0, 0, 0, 0.06);
+}
+
+.player--loading .loader {
+  display: flex;
+}
+
+.loader {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: lightgray;
 }
 
 .controls {
@@ -31,7 +51,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 }
-.control-panel--frist .control-button {
+.control-panel--first .control-button {
   width: 30px;
   height: 30px;
 }
@@ -53,15 +73,6 @@ body {
 
 .progress {
   margin: 10px 0;
-  width: 100%;
-  height: 8px;
-  background-color: lightgray;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.progress__line {
-  height: inherit;
-  background-color: gray;
 }
 
 .timeline {
@@ -77,15 +88,26 @@ body {
 }
 
 .current-track__image {
+  margin: 10px auto;
   height: 200px;
+  width: 200px;
+  border-radius: 50%;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
 /* track-items */
 .track-items {
   padding: 0 5px;
+}
+
+.track-items__wrapper {
+  height: 210px;
+  overflow-y: auto;
+}
+.track-items__wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .track-items__title {
@@ -145,7 +167,14 @@ body {
 
 .current-track__info {
   padding: 5px;
+  min-height: 42px;
   color: darkgray;
+}
+.current-track__info .current-track__name,
+.current-track__info .current-track__group {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* control-button */
@@ -188,4 +217,46 @@ body {
   .control-button:hover .icon {
     fill: gray;
   }
+}
+
+/* inputs */
+.progress__input,
+.volume__input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 7px;
+  border-radius: 7px;
+  background-color: lightgray;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(darkgray, darkgray);
+}
+
+.progress__input::-webkit-slider-thumb,
+.volume__input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: gray;
+  cursor: pointer;
+}
+
+.progress__input::-moz-range-thumb,
+.volume__input::-moz-range-thumb {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: gray;
+  cursor: pointer;
+}
+
+.progress__input {
+  width: 100%;
+  background-size: 0% 100%;
 }
