@@ -216,7 +216,7 @@ class AudioController {
   }
 
   changeBodyBackground(image) {
-    document.body.style.background = `url(./assets/images/${image}) no-repeat center / 100%`;
+    document.body.style.background = `url(./assets/images/${image}) no-repeat center / cover`;
   }
 
   updateListenersOfCurrentTrack({ audio, duration }) {
