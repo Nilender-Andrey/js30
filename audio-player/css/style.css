@@ -8,7 +8,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  flex-direction: column;
+  padding: 10px 10px 0 10px;
   background-color: lightgray;
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
@@ -20,6 +21,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
+  margin-bottom: 10px;
   width: 320px;
   height: 602px;
   border-radius: 12px;
@@ -259,4 +261,33 @@ body {
 .progress__input {
   width: 100%;
   background-size: 0% 100%;
+}
+
+.footer {
+  position: sticky;
+  top: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 320px;
+  height: 50px;
+  background-color: lightgray;
+  border-radius: 8px 8px 0 0;
+}
+
+.logo {
+  width: 35px;
+  height: 35px;
+}
+
+.year {
+  color: grey;
+}
+
+.github a {
+  color: grey;
+  transition: color 0.25s ease;
+}
+.github a:hover {
+  color: darkgray;
 }
