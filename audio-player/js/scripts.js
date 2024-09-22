@@ -182,6 +182,7 @@ class AudioController {
     this.renderCurrentTrack();
     this.updatePlayHandler();
     this.setVolumeCurrentTrack(audio);
+    this.changeBodyBackground(currentTrack.image);
 
     setTimeout(this.togglePlaying.bind(this), 10);
   }
@@ -202,8 +203,8 @@ class AudioController {
     const currentTrackStr = `
 <div class="current-track__image" style="background-image: url(./assets/images/${image});"></div>
 <div class="current-track__info">
-  <div class="current-track__name">${name}</div>
-  <div class="current-track__group">${group}</div>
+  <div class="current-track__name" title="${name}">${name}</div>
+  <div class="current-track__group" title="${group}">${group}</div>
 </div>`;
 
     this.currentTrackElement.innerHTML = currentTrackStr;
@@ -211,14 +212,17 @@ class AudioController {
     this.timelineEndElement.innerText = getMinAndSecByDuration(duration);
     this.progressInput.value = 0;
 
-    this.currentTrackUpdate(this.currentTrack);
+    this.updateListenersOfCurrentTrack(this.currentTrack);
   }
 
-  currentTrackUpdate({ audio, duration }) {
+  changeBodyBackground(image) {
+    document.body.style.background = `url(./assets/images/${image}) no-repeat center / 100%`;
+  }
+
+  updateListenersOfCurrentTrack({ audio, duration }) {
     audio.addEventListener(
       'timeupdate',
       ({ target }) => {
-        console.log('timeupdate');
         const { currentTime } = target;
 
         this.timelineStartElement.innerText = getMinAndSecByDuration(currentTime);

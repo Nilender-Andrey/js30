@@ -10,7 +10,9 @@ body {
   align-items: center;
 
   padding: 10px;
-  background: lightgray;
+
+  background-color: lightgray;
+  backdrop-filter: blur(7px);
 }
 
 .player {
@@ -60,7 +62,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 
-  &--frist .control-button {
+  &--first .control-button {
     width: 30px;
     height: 30px;
   }
@@ -99,9 +101,13 @@ body {
 }
 
 .current-track__image {
+  margin: 10px auto;
   height: 200px;
+  width: 200px;
+
+  border-radius: 50%;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
@@ -112,7 +118,6 @@ body {
 
 .track-items__wrapper {
   height: 210px;
-  padding-right: 10px;
 
   overflow-y: auto;
 
@@ -187,8 +192,16 @@ body {
 
 .current-track__info {
   padding: 5px;
+  min-height: 42px;
 
   color: darkgray;
+
+  .current-track__name,
+  .current-track__group {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* control-button */
