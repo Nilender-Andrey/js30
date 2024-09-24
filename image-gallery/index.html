@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <title>Unsplash API</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="content">
+      <h1 class="header-logo">
+        <img class="header-logo__img" src="assets/svg/photo.svg" alt="logo" />
+        Unsplash API
+      </h1>
+
+      <div id="search" class="search">
+        <input class="search__input" type="text" placeholder="Search" autocomplete="off" />
+
+        <button class="search__btn">
+          <svg class="search-icon_search">
+            <use xlink:href="./assets/svg/search_sprite.svg#search"></use>
+          </svg><svg class="search-icon_clear none">
+            <use xlink:href="./assets/svg/search_sprite.svg#clear"></use>
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <main id="main" class="main"></main>
+
+  <footer class="footer">
+    <div class="content">
+      <div class="github">
+        <a href="https://github.com/Nilender-Andrey">
+          github
+        </a>
+      </div>
+
+      <div class="year">2024</div>
+      <div class="logo">
+        <a href="https://rs.school/courses/javascript-preschool-ru">
+          <img src="./assets/svg/rss-logo.svg" alt="rss">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
