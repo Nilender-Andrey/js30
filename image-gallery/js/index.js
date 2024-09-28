@@ -1,5 +1,7 @@
+import Cards from './cards.js';
 import Search from './search.js';
 
-new Search(() => {
-  console.log('Search');
-});
+const cards = new Cards();
+await cards.getCards();
+
+new Search(cards.getCards.bind(cards));

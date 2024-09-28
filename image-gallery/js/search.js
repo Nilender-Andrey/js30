@@ -1,16 +1,23 @@
 class Search {
   constructor(callback) {
+    this.callback = callback;
+
     this.element = document.getElementById('search');
     this.searchInput = this.element.querySelector('.search__input');
     this.iconBtnClear = this.element.querySelector('.search-icon_clear');
     this.iconBtnSearch = this.element.querySelector('.search-icon_search');
+    this.searchBtn = this.element.querySelector('.search__btn');
     this.searchInput.focus();
-    this.searchInput.addEventListener('input', this._handlerInput.bind(this));
-    this.searchInput.addEventListener('keydown', this._handlerClick.bind(this));
-    this.element.querySelector('.search__btn').addEventListener('click', this._handlerClick.bind(this));
 
     this.clearInput = false;
-    this.callback = callback;
+
+    this.initListeners();
+  }
+
+  initListeners() {
+    this.searchInput.addEventListener('input', this._handlerInput.bind(this));
+    this.searchInput.addEventListener('keydown', this._handlerClick.bind(this));
+    this.searchBtn.addEventListener('click', this._handlerClick.bind(this));
   }
 
   _handlerInput() {
